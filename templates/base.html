@@ -43,19 +43,21 @@
     <span class="skiplink-text">""</span>
   </div>
 
-        <div class="container-fluid">
-      <div class="row flex-xl-nowrap">
+<div class="container-fluid">
+    <div class="row flex-xl-nowrap">
         <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
             <nav class="collapse bd-links" id="bd-docs-nav">
                         {% for temp in sidebar %}
                             {{ render_sidebar_left_item(temp.endpoint, temp.text, request, use_li=True ) }}
                         {% endfor %}
             </nav>
+        </div>
+
             <main role="main" class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
                 {% block content %}{% endblock %}
             </main>
-        </div>
-     </div>
+    </div>
+</div>
 
     <footer class="text-center  bd-footer-links bg-light border border-white bd-footer text-muted card-footer">
         {% block footer %}
