@@ -26,8 +26,8 @@
               </a>
             </li>
         </ul>
-
             <div class="collapse navbar-collapse navbar-nav-scroll" id="navbarSupportedContent">
+
                 <ul class="navbar-nav mr-auto bd-navbar-nav flex-row">
                     {% for temp in nav %}
                         {{ render_nav_item(temp.endpoint, temp.text, request, use_li=True ) }}
@@ -51,6 +51,8 @@
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
+          <ul>
+            </ul>
             <ul class="nav flex-column">
                         {% for temp in sidebar %}
                             {{ render_sidebar_left_item(temp.endpoint, temp.text, request, use_li=True ) }}
