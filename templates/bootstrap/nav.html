@@ -1,7 +1,7 @@
 {% macro render_nav_item(endpoint, text, request, badge='', use_li=False) %}
     {% set path = '/'+ endpoint + '/' %}
     {% if use_li %}<li class="nav-item">{% endif %}
-    <a class="{% if not use_li %}nav-item{% endif %} nav-link {% if request.path and request.path == path %}active <span class="sr-only">(current)</span>{% endif %}"
+    <a class="{% if not use_li %}nav-item{% endif %} nav-link {% if request.path and request.path == path or request.path == "/" %}active{% endif %}"
        href="{{ url(endpoint, **kwargs) }}">
         {{ text }} {% if badge %}<span class="badge badge-light">{{ badge }}</span>{% endif %}
     </a>
