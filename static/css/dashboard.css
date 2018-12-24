@@ -98,3 +98,12 @@ body {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
+.section-nav {
+	padding-left:0;border-left:1px solid #eee
+}
+.section-nav ul {
+	padding-left:1rem
+}
+.section-nav ul ul {
+	display:none
+}
