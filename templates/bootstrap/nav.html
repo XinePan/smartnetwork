@@ -24,7 +24,7 @@
 {% endmacro %}
 
 {% macro render_nav_item(menu, active=False, badge='') %}
-    {% if menuu %}
+    {% if menu %}
 
     <li class="nav-item {% if menu.submenu %}dropdown {% endif %}">
     <a class="nav-item nav-link {% if menu.submenu %}dropdown-toggle {% endif %} mr-md-2 {% if active %}active{% endif %}"
@@ -47,13 +47,3 @@
 
 
 
-{% macro render_breadcrumb_item(endpoint, text, request) %}
-    {% set active = True if request.path and request.path == endpoint else False %}
-    <li class="breadcrumb-item {% if active %}active{% endif %}" {% if active %} aria-current="page"{% endif %}>
-        {% if active %}
-            {{ text }}
-        {% else %}
-        <a href="{{ url(endpoint, **kwargs) }}">{{ text }}</a>
-        {% endif %}
-    </li>
-{% endmacro %}
