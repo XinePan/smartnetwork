@@ -27,9 +27,11 @@
       ga('create', 'UA-146052-10', 'getbootstrap.com');
       ga('send', 'pageview');
     </script>
-
-  </head>
   {% endblock %}
+  {% block extend_head %}
+  {% endblock %}
+  </head>
+
   <body>
     <a class="skippy sr-only sr-only-focusable" href="#content">
         <span class="skippy-text">Skip to main content</span>
