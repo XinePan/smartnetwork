@@ -4,6 +4,5 @@ from django.shortcuts import HttpResponse
 
 def Home(request):
     uContext = {}
-    uContext['nav'] = [{'endpoint':'home','text':'Home'}]
-    uContext['sidebar'] = [{'endpoint': '#header', 'text': '概览'}]
+    uContext['menus'] = [{'left':[{'endpoint':'Home','text':'Home','submenu':[{'endpoint':'Home','text':'Home'}]}]}]
     return render(request,'index.html',uContext)

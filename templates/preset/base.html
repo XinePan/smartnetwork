@@ -8,6 +8,8 @@
     <meta name="description" content="Working easily and to be happy.">
     <meta name="author" content="Xin Pan">
     <meta name="generator" content="Python3 and Django2.1">
+    <meta name="docsearch:language" content="en">
+    <meta name="docsearch:version" content="4.3">
     {% block title %}
         <title>CloudCampus SmartNetwork Application</title>
     {% endblock %}
@@ -21,28 +23,21 @@
     {% endblock %}
     <!-- Favicons -->
     <link rel="icon" href="{{static('imgs/CloudCampus-stack.png')}}">
-
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'UA-146052-10', 'getbootstrap.com');
-      ga('send', 'pageview');
-    </script>
   {% endblock %}
   {% block extend_head %}
   {% endblock %}
   </head>
 
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-        <span class="skippy-text">Skip to main content</span>
-    </a>
+
     {% block nav %}
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
         <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="CloudCampus"><svg class="d-block" width="36" height="36" viewbox="0 0 612 612" xmlns="http://www.w3.org/2000/svg" focusable="false"><title>Bootstrap</title><path fill="currentColor" d="M510 8a94.3 94.3 0 0 1 94 94v408a94.3 94.3 0 0 1-94 94H102a94.3 94.3 0 0 1-94-94V102a94.3 94.3 0 0 1 94-94h408m0-8H102C45.9 0 0 45.9 0 102v408c0 56.1 45.9 102 102 102h408c56.1 0 102-45.9 102-102V102C612 45.9 566.1 0 510 0z"/><path fill="currentColor" d="M450 450 C100 500 100 50 450 150 L450 130 C100 500 100 50 450 420"/></svg></a>
         {% if menus %}
-        {{ render_nav_items(menus, request) }}
+            {{ render_nav_items(menus, request) }}
         {% endif %}
     </header>
+
     {% endblock %}
 
     <div class="container-fluid">

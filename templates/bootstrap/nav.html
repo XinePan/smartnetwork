@@ -1,25 +1,26 @@
 {% macro render_nav_items(menus, request, badge='') %}
     {% if menus %}
-    {% set path = '/'+ mendpoint + '/' %}
+    {% set path = '/'+ 'Home' + '/' %}
     {% set active = Ture if request.path and request.path == path or request.path == "/" else False %}
+        {% for menu in menus %}
+            {% if menu.left %}
+            <div class="navbar-nav-scroll">
+            <ul class="navbar-nav bd-navbar-nav flex-row">
+                {% for left in menu.left %}
+                {{ render_nav_item(left,active) }}
+                {% endfor %}
+             </ul>
+            </div>
+            {% endif %}
 
-    {% if menus.left %}
-    <div class="navbar-nav-scroll">
-    <ul class="navbar-nav bd-navbar-nav flex-row">
-        {% for menu in menus.left %}
-        {{ render_nav_item(menu,active) }}
+            {% if menu.right %}
+            <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+                {% for right in menu.right %}
+                {{ render_nav_item(right,active) }}
+                {% endfor %}
+             </ul>
+            {% endif %}
         {% endfor %}
-     </ul>
-    </div>
-    {% endif %}
-
-    {% if menus.right %}
-    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-        {% for menu in menus.right %}
-        {{ render_nav_item(menu,active) }}
-        {% endfor %}
-     </ul>
-    {% endif %}
     {% endif %}
 {% endmacro %}
 
@@ -33,7 +34,7 @@
     </a>
     {% if menu.submenu %}
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
-        {% for sub in submenu %}
+        {% for sub in menu.submenu %}
         {% if sub.endpoint == 'h' %}<div class="dropdown-divider"></div>
         {% else %}<a class="dropdown-item" href="{{ url(sub.endpoint, **kwargs) }}">{{ sub.text }}</a>
         {% endif %}
