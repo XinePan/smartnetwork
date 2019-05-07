@@ -1,19 +1,26 @@
-{% macro render_sidebar_left_item(endpoint, text, request, badge='', use_li=False) %}
-    {% set path = '/'+ endpoint + '/' %}
-    {% if use_li %}<li class="nav-item">{% endif %}
-    <a class="{% if not use_li %}nav-item{% endif %} nav-link {% if request.path and request.path == path %}active bd-sidenav-active</span>{% endif %}"
-       href="{{ endpoint }}">
-        {{ text }} {% if badge %}<span class="badge badge-light">{{ badge }}</span>{% endif %}
-    </a>
-    {% if use_li %}</li>{% endif %}
+{% macro render_sidebar_items(menus, request, badge='') %}
+
+    <nav class="collapse bd-links" id="bd-docs-nav">
+    {% for menu in menus %}
+        {{ render_sidebar_item(menu,request) }}
+    {% endfor %}
+    </nav>
 {% endmacro %}
 
-{% macro render_sidebar_right_item(endpoint, text, request, badge='', use_li=False) %}
-    {% set path = '/'+ endpoint + '/' %}
-    {% if use_li %}<li class="nav-item">{% endif %}
-    <a class="{% if not use_li %}nav-item{% endif %} nav-link {% if request.path and request.path == path %}active</span>{% endif %}"
-       href="{{ endpoint }}">
-        {{ text }} {% if badge %}<span class="badge badge-light">{{ badge }}</span>{% endif %}
-    </a>
-    {% if use_li %}</li>{% endif %}
+{% macro render_sidebar_item(menu, request, badge='') %}
+    <div class="bd-toc-item active">
+        <a class="bd-toc-link" href="/docs/4.3/getting-started/introduction/">
+        Getting started
+      </a>
+    <ul class="nav bd-sidenav"><li class="active bd-sidenav-active">
+            <a href="/docs/4.3/getting-started/introduction/">
+              Introduction
+            </a>
+          </li><li>
+            <a href="/docs/4.3/getting-started/download/">
+              Download
+            </a>
+          </li>
+    </div>
+
 {% endmacro %}
