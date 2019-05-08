@@ -8,19 +8,22 @@
 {% endmacro %}
 
 {% macro render_sidebar_item(menu, request, badge='') %}
-    <div class="bd-toc-item active">
-        <a class="bd-toc-link" href="/docs/4.3/getting-started/introduction/">
-        Getting started
+    {% if menu %}
+    <div class="bd-toc-item">
+        <a class="bd-toc-link" {% if menu.endpoint %} href="{{ url(menu.endpoint, **kwargs) }}" {% elif menu.submenu %} href="{{ url(menu.submenu[0].endpoint, **kwargs) }}" {% endif %}>
+        {{ menu.text }}
       </a>
-    <ul class="nav bd-sidenav"><li class="active bd-sidenav-active">
-            <a href="/docs/4.3/getting-started/introduction/">
-              Introduction
-            </a>
-          </li><li>
-            <a href="/docs/4.3/getting-started/download/">
-              Download
-            </a>
-          </li>
+        {% if menu.submenu %}
+            <ul class="nav bd-sidenav">
+            {% for sub in menu.submenu %}
+                <li class="active bd-sidenav-active">
+                    <a href="{{ url(sub.endpoint, **kwargs) }}">
+                      sub.text
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
     </div>
-
+    {% endif %}
 {% endmacro %}
