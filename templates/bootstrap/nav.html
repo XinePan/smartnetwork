@@ -1,3 +1,4 @@
+{% from 'bootstrap/common.html' import render_href %}
 {% macro render_nav_items(menus, request, badge='') %}
     {% if menus %}
     {% set path = '/'+ 'Home' + '/' %}
@@ -29,14 +30,14 @@
 
     <li class="nav-item {% if menu.submenu %}dropdown {% endif %}">
     <a class="nav-item nav-link {% if menu.submenu %} dropdown-toggle {% endif %} mr-md-2 {% if active %}active{% endif %}"
-        id="{{ menu.id }}" {% if menu.submenu %} href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" {% else %} href="{{ url(menu.endpoint, **kwargs) }}" {% endif %}>
+        id="{{ menu.id }}" {% if menu.submenu %} href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" {% else %} href="{{ render_href(menu.endpoint,menu.type) }}" {% endif %}>
         {{ menu.text }} {% if badge %}<span class="badge badge-light">{{ badge }}</span>{% endif %}
     </a>
     {% if menu.submenu %}
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="{{ menu.id }}">
         {% for sub in menu.submenu %}
         {% if sub.endpoint == 'h' %}<div class="dropdown-divider"></div>
-        {% else %}<a class="dropdown-item" href="{{ url(sub.endpoint, **kwargs) }}">{{ sub.text }}</a>
+        {% else %}<a class="dropdown-item" href="{{ render_href(sub.endpoint,sub.type) }}">{{ sub.text }}</a>
         {% endif %}
         {% endfor %}
       </div>

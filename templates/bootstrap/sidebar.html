@@ -1,4 +1,5 @@
-{% macro render_sidebar_items(menus, request, badge='') %}
+{% from 'bootstrap/common.html' import render_href %}
+{% macro render_sidebar_items(menus, request) %}
 
     <nav class="collapse bd-links" id="bd-docs-nav">
     {% for menu in menus %}
@@ -10,14 +11,14 @@
 {% macro render_sidebar_item(menu, request, badge='') %}
     {% if menu %}
     <div class="bd-toc-item">
-        <a class="bd-toc-link" {% if menu.endpoint %} href="{{ url(menu.endpoint, **kwargs) }}" {% elif menu.submenu %} href="{{ url(menu.submenu[0].endpoint, **kwargs) }}" {% endif %}>
+        <a class="bd-toc-link" {% if menu.endpoint %} href="{{ render_href(menu.endpoint, menu.type) }}" {% elif menu.submenu %} href="{{ render_href(menu.submenu[0].endpoint,menu.submenu[0].type) }}" {% endif %}>
         {{ menu.text }}
       </a>
         {% if menu.submenu %}
             <ul class="nav bd-sidenav">
             {% for sub in menu.submenu %}
                 <li class="active bd-sidenav-active">
-                    <a href="{{ url(sub.endpoint, **kwargs) }}">
+                    <a href="{{ render_href(sub.endpoint,sub.type) }}">
                       sub.text
                     </a>
                 </li>
