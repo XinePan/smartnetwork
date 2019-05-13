@@ -4,7 +4,7 @@ from django.shortcuts import HttpResponse
 
 def Home(request):
     uContext = {}
-    uContext['nav'] = [{'left':[{'id':'Home','endpoint':'Home','text':'Home','type':2},{'id':'Home','endpoint':'Home','text':'Home','type':2,'submenu':[{'id':'Home1','endpoint':'Home','text':'Home','type':2},{'id':'Home2','endpoint':'Home','text':'Home'}]}],'right':[{'id':'Home','endpoint':'Home','text':'Home',},{'id':'Home','endpoint':'Home','text':'Home','submenu':[{'id':'Home1','endpoint':'Home','text':'Home'},{'id':'Home2','endpoint':'Home','text':'Home'}]}]}]
+    uContext['nav'] = [{'left':[{'id':'Home','endpoint':'Home','text':'Home'},{'id':'Home','endpoint':'Home','text':'Home','submenu':[{'id':'Home1','endpoint':'Home','text':'Home'},{'id':'Home2','endpoint':'Home','text':'Home'}]}],'right':[{'id':'Home','endpoint':'Home','text':'Home',},{'id':'Home','endpoint':'Home','text':'Home','submenu':[{'id':'Home1','endpoint':'Home','text':'Home'},{'id':'Home2','endpoint':'Home','text':'Home'}]}]}]
     uContext['sidebar']=[{'id':'Home','endpoint':'Home','text':'Home',},{'id':'Home','endpoint':'Home','text':'Home','submenu':[{'id':'Home1','endpoint':'Home','text':'Home'}]}]
     uContext['section_nav'] = [{'id': 'Home', 'endpoint': 'Home', 'text': 'Home1', 'type':3},
                            {'id': 'Home', 'endpoint': 'Home', 'text': 'Home',

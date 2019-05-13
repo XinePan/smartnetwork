@@ -1,10 +1,10 @@
 {% from 'bootstrap/common.html' import render_href %}
 {% macro render_section_nav_items(menus, request) %}
-    {% for menu in menus %}
+    {% for menu in menus -%}
         <ul class="section-nav">
             <li class="toc-entry toc-h2">
-                <a href="{{ render_href(menu.endpoint,menu.type) }}">{{ menu.text }}</a>
+                <a id="{{ menu.id }}" href="{{ render_href(menu.endpoint,menu.type) }}">{{ menu.text }}</a>
             </li>
         </ul>
-    {% endfor %}
+    {%- endfor %}
 {% endmacro %}

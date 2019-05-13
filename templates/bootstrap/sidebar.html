@@ -2,27 +2,27 @@
 {% macro render_sidebar_items(menus, request) %}
 
     <nav class="collapse bd-links" id="bd-docs-nav">
-    {% for menu in menus %}
+    {% for menu in menus -%}
         {{ render_sidebar_item(menu,request) }}
-    {% endfor %}
+    {%- endfor %}
     </nav>
 {% endmacro %}
 
 {% macro render_sidebar_item(menu, request, badge='') %}
     {% if menu %}
-    <div class="bd-toc-item">
-        <a class="bd-toc-link" {% if menu.endpoint %} href="{{ render_href(menu.endpoint, menu.type) }}" {% elif menu.submenu %} href="{{ render_href(menu.submenu[0].endpoint,menu.submenu[0].type) }}" {% endif %}>
+    <div class="bd-toc-item ">
+        <a class="bd-toc-link"  id="{{ menu.id }}" {% if menu.endpoint %} href="{{ render_href(menu.endpoint, menu.type) }}" {% elif menu.submenu %} href="{{ render_href(menu.submenu[0].endpoint,menu.submenu[0].type) }}" {% endif %}>
         {{ menu.text }}
       </a>
         {% if menu.submenu %}
             <ul class="nav bd-sidenav">
-            {% for sub in menu.submenu %}
-                <li class="active bd-sidenav-active">
-                    <a href="{{ render_href(sub.endpoint,sub.type) }}">
+            {% for sub in menu.submenu -%}
+                <li class="">
+                    <a id="{{ sub.id }}" href="{{ render_href(sub.endpoint,sub.type) }}">
                       sub.text
                     </a>
                 </li>
-            {% endfor %}
+            {%- endfor %}
             </ul>
         {% endif %}
     </div>
