@@ -12,7 +12,7 @@
     {%- if menu -%}
     <div class="bd-toc-item {% if request.path == render_href(menu.endpoint,menu.type) %}active{% endif %}">
         <a class="bd-toc-link"  id="{{ menu.id }}" {% if menu.endpoint %} href="{{ render_href(menu.endpoint, menu.type) }}" {% elif menu.submenu %} href="{{ render_href(menu.submenu[0].endpoint,menu.submenu[0].type) }}" {% endif %}>
-        {{ menu.text }}
+        {{ menu.text }}{% if badge %}<span class="badge badge-light">{{ badge }}</span>{% endif %}
       </a>
         {%- if menu.submenu -%}
             <ul class="nav bd-sidenav">

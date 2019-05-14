@@ -1,9 +1,9 @@
 {% from 'bootstrap/common.html' import render_href %}
-{% macro render_section_nav_items(menus, request) %}
+{% macro render_section_nav_items(menus, request, badge='') %}
     {% for menu in menus -%}
         <ul class="section-nav">
             <li class="toc-entry toc-h2">
-                <a id="{{ menu.id }}" href="{{ render_href(menu.endpoint,menu.type) }}">{{ menu.text }}</a>
+                <a id="{{ menu.id }}" href="{{ render_href(menu.endpoint,menu.type) }}">{{ menu.text }}{% if badge %}<span class="badge badge-light">{{ badge }}</span>{% endif %}</a>
             </li>
         </ul>
     {%- endfor %}
