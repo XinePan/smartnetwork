@@ -1,11 +1,11 @@
-{% macro render_href(endpoint, type=-1) %}
-    {% if type is equalto 1 %}
+{%- macro render_href(endpoint, type=-1) -%}
+    {%- if type is equalto 1 -%}
         {{ endpoint }}
-    {% elif type is equalto 2 %}
+    {%- elif type is equalto 2 -%}
         #
-    {% elif type is equalto 3 %}
+    {%- elif type is equalto 3 -%}
         #{{ endpoint }}
-    {% else %}
+    {%- else -%}
         {{ url(endpoint, **kwargs) }}
-    {% endif %}
-{% endmacro %}
+    {%- endif -%}
+{%- endmacro -%}
