@@ -1,30 +1,30 @@
 {% from 'bootstrap/common.html' import render_href %}
-{% macro render_sidebar_items(menus, request) %}
+{%- macro render_sidebar_items(menus, request) -%}
 
     <nav class="collapse bd-links" id="bd-docs-nav">
-    {% for menu in menus -%}
+    {%- for menu in menus -%}
         {{ render_sidebar_item(menu,request) }}
-    {%- endfor %}
+    {%- endfor -%}
     </nav>
-{% endmacro %}
+{%- endmacro -%}
 
-{% macro render_sidebar_item(menu, request, badge='') %}
-    {% if menu %}
+{%- macro render_sidebar_item(menu, request, badge='') -%}
+    {%- if menu -%}
     <div class="bd-toc-item {% if request.path == render_href(menu.endpoint,menu.type) %}active{% endif %}">
         <a class="bd-toc-link"  id="{{ menu.id }}" {% if menu.endpoint %} href="{{ render_href(menu.endpoint, menu.type) }}" {% elif menu.submenu %} href="{{ render_href(menu.submenu[0].endpoint,menu.submenu[0].type) }}" {% endif %}>
         {{ menu.text }}
       </a>
-        {% if menu.submenu %}
+        {%- if menu.submenu -%}
             <ul class="nav bd-sidenav">
-            {% for sub in menu.submenu -%}
+            {%- for sub in menu.submenu -%}
                 <li class="{% if request.path == render_href(sub.endpoint,sub.type) %}active bd-sidenav-active{% endif %}">
                     <a id="{{ sub.id }}" href="{{ render_href(sub.endpoint,sub.type) }}">
                       {{ sub.text }}
                     </a>
                 </li>
-            {%- endfor %}
+            {%- endfor -%}
             </ul>
-        {% endif %}
+        {%- endif -%}
     </div>
-    {% endif %}
-{% endmacro %}
+    {%- endif -%}
+{%- endmacro -%}
