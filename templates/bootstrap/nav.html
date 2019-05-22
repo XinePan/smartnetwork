@@ -1,25 +1,21 @@
 {% from 'bootstrap/common.html' import render_href %}
-{% macro render_nav_items(menus, request, badge='') -%}
-    {% if menus %}
-        {% for menu in menus %}
-            {% if menu.left %}
-            <div class="navbar-nav-scroll">
-            <ul class="navbar-nav bd-navbar-nav flex-row">
-                {% for left in menu.left -%}
-                {{ render_nav_item(left,request) }}
-                {%- endfor %}
-             </ul>
-            </div>
-            {% endif %}
+{% macro render_nav_items(menu, request, badge='') -%}
+    {% if menu.left %}
+    <div class="navbar-nav-scroll">
+    <ul class="navbar-nav bd-navbar-nav flex-row">
+        {% for left in menu.left -%}
+        {{ render_nav_item(left,request) }}
+        {%- endfor %}
+     </ul>
+    </div>
+    {% endif %}
 
-            {% if menu.right %}
-            <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-                {% for right in menu.right -%}
-                {{ render_nav_item(right,request) }}
-                {%- endfor %}
-             </ul>
-            {% endif %}
-        {% endfor %}
+    {% if menu.right %}
+    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        {% for right in menu.right -%}
+        {{ render_nav_item(right,request) }}
+        {%- endfor %}
+     </ul>
     {% endif %}
 {%- endmacro %}
 
