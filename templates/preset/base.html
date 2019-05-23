@@ -47,18 +47,18 @@
     <div class="container-fluid">
       <div class="row flex-xl-nowrap">
           {% block sidebar %}
+            {% if sidebar %}
               <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
-                  {% if sidebar %}
                     {{ render_sidebar_items(sidebar, request) }}
-                  {% endif %}
               </div>
+            {% endif %}
           {% endblock %}
         {% block section_nav %}
+            {% if section_nav %}
             <div class="d-none d-xl-block col-xl-2 bd-toc">
-                {% if section_nav %}
                     {{ render_section_nav_items(section_nav, request) }}
-                  {% endif %}
             </div>
+            {% endif %}
          {% endblock %}
         {% block main %}
             <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">

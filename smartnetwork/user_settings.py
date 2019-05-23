@@ -23,8 +23,14 @@ NAV = {
 }
 
 #sidebar
-SIDEBAR = [{'id':'Home','endpoint':'Home','text':'Home','type':3},
+SIDEBAR = {
+    'index':[
+        {'id':'Home','endpoint':'Home13','text':'Home13','type':3},
            ]
+}
 #section_nav
-SECTION_NAV = [{'id': 'Home', 'endpoint': 'Home', 'text': 'Home1', 'type':3},
-               ]
+SECTION_NAV = {
+    'index':[
+        {'id':'Home','endpoint':'Home','text':'Home','type':3},
+           ]
+}
