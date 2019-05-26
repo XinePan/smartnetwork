@@ -1,0 +1,8 @@
+{
+  "id": "Tester",
+  "version": "1.0.0",
+  "items": [
+    {'active':True,'img':,'CloudCampus-stack.png','head':'First Slider','text':'hello world','link'='#','link_text':'sdf'},
+    {'img':,'CloudCampus-stack.png','head':'Second Slider','text':'hello world!','link'='#','link_text':'sdf'},
+]
+}

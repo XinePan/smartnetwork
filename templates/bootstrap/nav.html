@@ -23,14 +23,14 @@
     {% if menu %}
     <li class="nav-item {% if menu.submenu %}dropdown {% endif %}">
     <a class="nav-item nav-link {% if menu.submenu %} dropdown-toggle {% endif %} mr-md-2 {% if request.path == render_href(menu.endpoint,menu.type) %}active{% endif %}"
-        id="{{ menu.id }}" {% if menu.submenu %} href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" {% else %} href="{{ render_href(menu.endpoint,menu.type) }}" {% endif %}>
+        id="{{ menu.id }}" {% if menu.submenu %} href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" {% else %} href="{{ render_href(menu.endpoint,menu.type) }}" {% if menu.type==2 %}target="_blank" {% endif %}{% endif %}>
         {{ menu.text }}  {% if badge %}<span class="badge badge-light">{{ badge }}</span>{% endif %}
     </a>
     {% if menu.submenu %}
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="{{ menu.id }}">
         {% for sub in menu.submenu -%}
         {% if sub.endpoint == 'h' -%}<div class="dropdown-divider"></div>
-        {% else %}<a class="dropdown-item {% if request.path == render_href(sub.endpoint,sub.type) %}active{% endif %}" id="{{ sub.id }}" href="{{ render_href(sub.endpoint,sub.type) }}">{{ sub.text }}</a>
+        {% else %}<a class="dropdown-item {% if request.path == render_href(sub.endpoint,sub.type) %}active{% endif %}" id="{{ sub.id }}" href="{{ render_href(sub.endpoint,sub.type) }}" {% if sub.type==2 %}target="_blank" {% endif %}>{{ sub.text }}</a>
         {%- endif %}
         {%- endfor %}
       </div>

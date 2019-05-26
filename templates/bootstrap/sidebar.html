@@ -11,14 +11,14 @@
 {%- macro render_sidebar_item(menu, request, badge='') -%}
     {%- if menu -%}
     <div class="bd-toc-item {% if request.path == render_href(menu.endpoint,menu.type) %}active{% endif %}">
-        <a class="bd-toc-link"  id="{{ menu.id }}" {% if menu.endpoint %} href="{{ render_href(menu.endpoint, menu.type) }}" {% elif menu.submenu %} href="{{ render_href(menu.submenu[0].endpoint,menu.submenu[0].type) }}" {% endif %}>
+        <a class="bd-toc-link"  id="{{ menu.id }}" {% if menu.endpoint %} href="{{ render_href(menu.endpoint, menu.type) }}"  {% if menu.type==2 %}target="_blank" {% endif %} {% elif menu.submenu %} href="{{ render_href(menu.submenu[0].endpoint,menu.submenu[0].type) }}"  {% if menu.submenu[0].type==2 %}target="_blank" {% endif %}{% endif %}>
         {{ menu.text }}{% if badge %}<span class="badge badge-light">{{ badge }}</span>{% endif %}
       </a>
         {%- if menu.submenu -%}
             <ul class="nav bd-sidenav">
             {%- for sub in menu.submenu -%}
                 <li class="{% if request.path == render_href(sub.endpoint,sub.type) %}active bd-sidenav-active{% endif %}">
-                    <a id="{{ sub.id }}" href="{{ render_href(sub.endpoint,sub.type) }}">
+                    <a id="{{ sub.id }}" href="{{ render_href(sub.endpoint,sub.type) }}" {% if sub.type==2 %}target="_blank" {% endif %}>
                       {{ sub.text }}
                     </a>
                 </li>

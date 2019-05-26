@@ -3,7 +3,7 @@
     {% for menu in menus -%}
         <ul class="section-nav">
             <li class="toc-entry toc-h2">
-                <a id="{{ menu.id }}" href="{{ render_href(menu.endpoint,menu.type) }}">{{ menu.text }}{% if badge %}<span class="badge badge-light">{{ badge }}</span>{% endif %}</a>
+                <a id="{{ menu.id }}" href="{{ render_href(menu.endpoint,menu.type) }}" {% if menu.type==2 %}target="_blank" {% endif %}>{{ menu.text }}{% if badge %}<span class="badge badge-light">{{ badge }}</span>{% endif %}</a>
             </li>
         </ul>
     {%- endfor %}
