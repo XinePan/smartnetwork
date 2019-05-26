@@ -25,8 +25,16 @@ SECTION_NAV = {
 CAROUSEL ={
   "id":"Tester",
   "version":"1.0.0",
+    "pagination":4,
   "carousel_item":[
-    {'active':True,'img':'CloudCampus-stack.png','head':'First Slider','text':'hello world','link':'https://www.sohu.com','link_text':'https://www.sohu.com','type':2},
+    {'active':True,'img':'128x128.png','head':'First Slider','text':'hello world','link':'https://www.sohu.com','link_text':'https://www.sohu.com','type':2},
     {'img':'CloudCampus-stack.png','head':'Second Slider','text':'hello world','link':'#','link_text':'sdf'},
+    {'img':'128x128.png','head':'First Slider','text':'hello world','link':'https://www.sohu.com','link_text':'搜狐','type':2},
+    {'img':'CloudCampus-stack.png','head':'Second Slider','text':'hello world','link':'#','link_text':'sdf'},
+{'img':'CloudCampus-stack.png','head':'Second Slider','text':'hello world','link':'#','link_text':'sdf'},
+    {'img':'128x128.png','head':'First Slider','text':'hello world','link':'https://www.sohu.com','link_text':'搜狐','type':2},
+    {'img':'CloudCampus-stack.png','head':'Second Slider','text':'hello world','link':'#','link_text':'sdf'},
+{'img':'CloudCampus-stack.png','head':'Second Slider','text':'hello world','link':'#','link_text':'sdf'},
+{'img':'CloudCampus-stack.png','head':'Second Slider','text':'hello world','link':'#','link_text':'sdf'},
 ]
 }
