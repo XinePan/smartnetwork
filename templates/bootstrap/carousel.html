@@ -2,23 +2,21 @@
 {%- macro render_carousel(carousel) -%}
 <div id="{{ carousel.id }}" class="carousel slide pointer-event" data-ride="carousel">
     <ol class="carousel-indicators">
-
         {% for i in range(0,carousel.carousel_item|length,carousel.pagination) %}
             <li data-target="#{{ carousel.id }}" data-slide-to="{{ loop.index0 }}" class="{% for j in range(carousel.pagination)  if i+j <carousel.carousel_item|length and carousel.carousel_item[i+j].active %}active{% endfor %} bg-dark"></li>
-
         {% endfor %}
     </ol>
     <div class="carousel-inner">
-    {% for i in carousel.carousel_item|slice(carousel.pagination) %}
-        <div class="carousel-item {% for k in i if 'active' in k %}active{% endfor %}">
+    {% for i in range(0,carousel.carousel_item|length,carousel.pagination) %}
+        <div class="carousel-item {% for j in range(carousel.pagination)  if i+j <carousel.carousel_item|length and carousel.carousel_item[i+j].active %}active{% endfor %}">
         <div class="row">
-        {% for j in i %}
+        {% for j in range(carousel.pagination)  if i+j <carousel.carousel_item|length %}
             <div class="card col-{{ 12//carousel.pagination }}" style="width: 18rem;">
-                <img src="{{static('imgs/'+j.img)}}" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100 alert-dark" width="100%" height="100%" title="{{ j.head }}" alt="{{ j.head }}">
+                <img src="{{static('imgs/'+carousel.carousel_item[i+j].img)}}" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100 alert-dark" width="100%" height="100%" title="{{ carousel.carousel_item[i+j].head }}" alt="{{ carousel.carousel_item[i+j].head }}">
                   <div class="card-body">
-                <h5 class="card-title">{{ j.head }}</h5>
-                <p class="card-text">{{ j.text }}</p>
-                <p><a class="btn btn-lg btn-primary" href="{{ render_href(j.link,j.type) }}" {% if j.type==2 %}target="_blank" {% endif %} role="button">{{ j.link_text }}</a></p>
+                <h5 class="card-title">{{ carousel.carousel_item[i+j].head }}</h5>
+                <p class="card-text">{{ carousel.carousel_item[i+j].text }}</p>
+                <p><a class="btn btn-lg btn-primary" href="{{ render_href(carousel.carousel_item[i+j].link,carousel.carousel_item[i+j].type) }}" {% if carousel.carousel_item[i+j].type==2 %}target="_blank" {% endif %} role="button">{{ carousel.carousel_item[i+j].link_text }}</a></p>
                 </div>
             </div>
             {% endfor %}
